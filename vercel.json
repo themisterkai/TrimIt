@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/dist/index.js",
+      "use": "@vercel/node",
+      "config": { "includeFiles": ["server/dist/**"] }
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "server/dist/index.js" },
+    { "src": "/(.*)", "dest": "server/dist/index.js" }
+  ],
+  "buildCommand": "npm install --prefix server && npm install --prefix frontend && npm run build --prefix frontend && npm run build --prefix server"
+}

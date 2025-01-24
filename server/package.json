@@ -1,0 +1,32 @@
+{
+  "name": "trim-it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd ../frontend && npm run dev",
+    "dev:backend": "nodemon index.js",
+    "build:local": "npx tsc && npm run build:ui",
+    "postinstall": "npx tsc && cd ../frontend && npm install && npm run build",
+    "build": "npx tsc"
+  },
+  "author": "Kris Albert Kai Lee",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "plaid": "^30.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "concurrently": "^9.1.2"
+  }
+}
