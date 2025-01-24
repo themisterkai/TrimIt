@@ -2,14 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/dist/index.js",
+      "src": "server/src/index.ts",
       "use": "@vercel/node",
       "config": { "includeFiles": ["server/dist/**"] }
     }
   ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "server/dist/index.js" },
-    { "src": "/(.*)", "dest": "server/dist/index.js" }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "server/src/" },
+    { "source": "/api/(.*)", "destination": "server/src/" }
   ],
   "buildCommand": "npm install --prefix server && npm install --prefix frontend && npm run build --prefix frontend && npm run build --prefix server"
 }
+
